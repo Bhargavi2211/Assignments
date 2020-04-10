@@ -22,7 +22,7 @@ class Server:
         self.t2.start()
         while True:
             message = self.conn.recv(1024).decode()
-
+            print("Client:", message)
             if message == 'Bye Server':
                 break
 
