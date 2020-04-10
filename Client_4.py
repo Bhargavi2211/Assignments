@@ -15,6 +15,7 @@ class Client:
 		self.t2.join()
 
 	def incoming_message(self):
+		self.t2.start()
 		while True:
 			message = self.s.recv(1024).decode()
 			print("Server:", message)
