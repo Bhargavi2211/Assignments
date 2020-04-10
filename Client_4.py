@@ -2,13 +2,12 @@ import socket
 import threading
 
 class Client:
-	host = input(str("Please enter hostname of server:"))
-	port = 2606
 	def __init__(self,host,port):
 		self.host = host
 		self.port = port
 		self.s = socket.socket()
 		self.s.connect((host, port))
+		print("Connect to chat server")
 		self.t1 = threading.Thread(target=self.incoming_message)
 		self.t2 = threading.Thread(target=self.send)
 		self.t1.start()
@@ -28,3 +27,8 @@ class Client:
 			self.s.send(message.encode())
 			if message == "Bye Server":
 				break
+
+host = input("Please enter hostname of server:")
+port = 2606
+
+object = Client(host, port)
